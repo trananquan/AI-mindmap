@@ -50,7 +50,7 @@ def build_mermaid_flowchart(title, data, flow_direction='TD'):
     mermaid = f"flowchart {flow_direction}\n"
     mermaid += f"    %% {title}\n"
     
-    special_nodes = {"Start": "startend", "End": "startend"}
+    special_nodes = {"Bắt đầu": "startend", "Kết thúc": "startend"}
     
     # Node Definitions
     for node in nodes:
