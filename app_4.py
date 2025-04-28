@@ -56,7 +56,7 @@ def build_mermaid_flowchart(title, data, flow_direction='TD'):
     # Node Definitions
     for node in nodes:
         shape = ""
-        if node['text'].lower() in ["start", "end"]:
+        if node['text'].lower() in ["start", "end", "bắt đầu", "kết thúc"]:
             shape = f"(({node['text']}))"  # Circle double parentheses
         elif "decision" in node['text'].lower():
             shape = f"{{{node['text']}}}"  # Diamond for decision
