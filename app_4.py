@@ -8,16 +8,17 @@ genai.configure(api_key="AIzaSyAD5-tRTbhtr17baOAVq307Fguv5oa49hY")
 
 def get_flowchart_data_from_gemini(description):
     prompt = f"""
-    Given the description below, generate ONLY flowchart data in strict JSON format.  If requirement is in Vietnamese, show result in Vietnamese language.
+    Given the description below, generate ONLY flowchart data in strict JSON format.  If requirement is in Vietnamese, keep structure of built diagram 
+    and show result in diagram in Vietnamese language.
     
     Output example:
 
     {{
       "nodes": [
-        {{"id": "A", "text": "Bắt đầu"}},
+        {{"id": "A", "text": "Start"}},
         {{"id": "B", "text": "Process"}},
         {{"id": "C", "text": "Decision"}},
-        {{"id": "D", "text": "Kết thúc"}}
+        {{"id": "D", "text": "End"}}
       ],
       "edges": [
         {{"from": "A", "to": "B"}},
@@ -50,7 +51,7 @@ def build_mermaid_flowchart(title, data, flow_direction='TD'):
     mermaid = f"flowchart {flow_direction}\n"
     mermaid += f"    %% {title}\n"
     
-    special_nodes = {"Bắt đầu": "startend", "Kết thúc": "startend"}
+    special_nodes = {"Start": "startend", "End": "startend"}
     
     # Node Definitions
     for node in nodes:
