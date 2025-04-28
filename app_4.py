@@ -9,7 +9,7 @@ genai.configure(api_key="AIzaSyAD5-tRTbhtr17baOAVq307Fguv5oa49hY")
 def get_flowchart_data_from_gemini(description):
     prompt = f"""
     Given the description below, generate ONLY flowchart data in strict JSON format.  If requirement is in Vietnamese, keep structure of built diagram 
-    and show result in diagram in Vietnamese language.
+    and show result in diagram in Vietnamese language. Show Bắt đầu node in circle and Kết thúc node in circle in the diagram
     
     Output example:
 
