@@ -8,7 +8,7 @@ genai.configure(api_key="AIzaSyAD5-tRTbhtr17baOAVq307Fguv5oa49hY")
 
 def get_flowchart_data_from_gemini(description):
     prompt = f"""
-    Given the description below, generate ONLY flowchart data in strict JSON format.
+    Given the description below, generate ONLY flowchart data in strict JSON format. If requirement is in Vietnamese, show result in Vietnamese language.
 
     Output example:
 
@@ -106,33 +106,33 @@ def render_mermaid(mermaid_code):
 
 # Streamlit UI
 st.set_page_config(page_title="AI Flowchart Builder", layout="wide")
-st.title("📊 AI-Powered Flowchart Generator")
+st.title("📊 AI tạo biểu đồ quy trình Flowchart")
 
-title = st.text_input("Flowchart Title", placeholder="Input Flowchart title.....")
-description = st.text_area("Enter a description for the flowchart", placeholder="Input Flowchart description.....", height=150)
-flow_direction = st.selectbox("Flow Direction", options=["TD (Top-Down)", "LR (Left-Right)", "BT (Bottom-Top)", "RL (Right-Left)"])
+title = st.text_input("Tên biểu đồ Flowchart", placeholder="Nhập vào tên biểu đồ.....")
+description = st.text_area("Nhập vào mô tả biểu đồ Flowchart", placeholder="Nhập vào mô tả biểu đồ.....", height=150)
+flow_direction = st.selectbox("Hướng luồng quy trình", options=["Trên xuống dưới", "Trái qua phải", "Dưới lên trên", "Phải qua trái"])
 
 # Mapping for short code
 flow_direction_short = {
-    "TD (Top-Down)": "TD",
-    "LR (Left-Right)": "LR",
-    "BT (Bottom-Top)": "BT",
-    "RL (Right-Left)": "RL"
+    "Trên xuống dưới": "TD",
+    "Trái qua phải": "LR",
+    "Dưới lên trên": "BT",
+    "Phải qua trái": "RL"
 }[flow_direction]
 
-if st.button("Generate Flowchart"):
+if st.button("Tạo biểu đồ"):
     if description:
-        with st.spinner('Talking to Gemini AI and building your flowchart...'):
+        with st.spinner('AI đang xây dựng biểu đồ cho bạn...'):
             try:
                 flowchart_data = get_flowchart_data_from_gemini(description)
                 mermaid_code = build_mermaid_flowchart(title, flowchart_data, flow_direction_short)
-                st.subheader("Generated Flowchart Diagram")
+                st.subheader("Biểu đồ quy trình Flowchart")
                 render_mermaid(mermaid_code)
                 st.code(mermaid_code, language='markdown')
             except Exception as e:
-                st.error(f"Error generating flowchart: {e}")
+                st.error(f"Xảy ra lỗi: {e}")
     else:
-        st.warning("Please enter a description first.")
+        st.warning("Xin hãy nhập vào mô tả biểu đồ.")
 
 st.markdown(
         """
