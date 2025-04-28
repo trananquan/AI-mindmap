@@ -56,24 +56,24 @@ def render_mermaid(mermaid_code):
 
 # Streamlit app UI
 st.set_page_config(page_title="AI Timeline Builder", layout="wide")
-st.title("📚 AI Timeline Diagram Generator")
+st.title("📚 AI tạo biểu đồ Timeline")
 
-title = st.text_input("Timeline Title", placeholder="Input timeline title.....")
-description = st.text_area("Enter a description for the timeline", placeholder="Input timeline description.....", height=150)
+title = st.text_input("Tên biểu đồ Timeline", placeholder="Nhập vào tên biểu đồ.....")
+description = st.text_area("Nhập vào đoạn mô tả cho biểu đồ Timeline", placeholder="Nhập vào đoạn mô tả tại đây.....", height=150)
 
-if st.button("Generate Timeline"):
+if st.button("Tạo biểu đồ"):
     if description:
-        with st.spinner('Talking to Gemini AI and building your timeline...'):
+        with st.spinner('AI đang tạo biểu đồ cho bạn...'):
             try:
                 events = get_events_from_gemini(description)
                 mermaid_code = build_mermaid_timeline(title, events)
-                st.subheader("Generated Timeline Diagram")
+                st.subheader("Biểu đồ Timeline")
                 render_mermaid(mermaid_code)
                 st.code(mermaid_code, language='markdown')
             except Exception as e:
-                st.error(f"Error generating timeline: {e}")
+                st.error(f"Đã xảy ra lỗi: {e}")
     else:
-        st.warning("Please enter a description first.")
+        st.warning("Xin hãy nhập vào đoạn mô tả.")
 
 st.markdown(
         """
