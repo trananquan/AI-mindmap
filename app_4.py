@@ -8,7 +8,8 @@ genai.configure(api_key="AIzaSyAD5-tRTbhtr17baOAVq307Fguv5oa49hY")
 
 def get_flowchart_data_from_gemini(description):
     prompt = f"""
-    Given the description below, generate ONLY flowchart data in strict JSON format. If requirement is in Vietnamese, show result in Vietnamese language.
+    Given the description below, generate ONLY flowchart data in strict JSON format. If requirement is in Vietnamese, translate to English 
+    to process data and then translate again to show result in Vietnamese language.
 
     Output example:
 
