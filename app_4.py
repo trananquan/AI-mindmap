@@ -14,10 +14,10 @@ def get_flowchart_data_from_gemini(description):
 
     {{
       "nodes": [
-        {{"id": "A", "text": "Start"}},
+        {{"id": "A", "text": "Bắt đầu"}},
         {{"id": "B", "text": "Process"}},
         {{"id": "C", "text": "Decision"}},
-        {{"id": "D", "text": "End"}}
+        {{"id": "D", "text": "Kết thúc"}}
       ],
       "edges": [
         {{"from": "A", "to": "B"}},
