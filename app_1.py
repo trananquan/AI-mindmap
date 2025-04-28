@@ -199,7 +199,7 @@ def create_markmap_html(markdown_content):
 def main():
     st.set_page_config(layout="wide")
     
-    st.title("📚 AI Chuyển đổi gợi ý thành Sơ đồ tư duy MindMap ") 
+    st.title("📚 AI chuyển gợi ý thành Sơ đồ MindMap ") 
     st.markdown(
         """
         <style>
