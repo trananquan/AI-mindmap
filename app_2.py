@@ -40,7 +40,7 @@ def create_mindmap_markdown(text):
     try:
         model = genai.GenerativeModel('gemini-2.0-flash')
         
-        max_chars = 30000
+        max_chars = 90000
         if len(text) > max_chars:
             text = text[:max_chars] + "..."
             st.warning(f"Text was truncated to {max_chars} characters due to length limitations.")
