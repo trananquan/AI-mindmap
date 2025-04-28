@@ -178,7 +178,7 @@ def create_markmap_html(markdown_content):
 def main():
     st.set_page_config(layout="wide")
     
-    st.title("📚 AI-Powered Mindmap Converter App ") 
+    st.title("📚 AI chuyển văn bản PDF thành sơ đồ Mindmap") 
     st.markdown(
         """
         <style>
@@ -219,13 +219,13 @@ def main():
     if not configure_genai():
         return
 
-    st.subheader("📓Generate Mindmap from PDF file")
-    uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
+    st.subheader("📓Tạo sơ đồ Mindmap từ file PDF")
+    uploaded_file = st.file_uploader("Chọn file PDF", type="pdf")
     
     # Add buttons for PDF conversion and text prompt conversion
-    if st.button("Convert PDF to Mindmap"):
+    if st.button("Chuyển PDF thành Mindmap"):
         if uploaded_file is not None:
-            with st.spinner("🔄 Processing PDF and generating mindmap..."):
+            with st.spinner("🔄 Đang xử lý file PDF và xuất ra mindmap..."):
                 text = extract_text_from_pdf(uploaded_file)
                 
                 if text:
@@ -234,19 +234,19 @@ def main():
                     markdown_content = create_mindmap_markdown(text)
                     
                     if markdown_content:
-                        tab1, tab2 = st.tabs(["📊 Mindmap", "📝 Markdown"])
+                        tab1, tab2 = st.tabs(["📊 Mindmap", "📝 Ghi chú"])
                         
                         with tab1:
-                            st.subheader("Interactive Mindmap")
+                            st.subheader("Sơ đồ Mindmap")
                             html_content = create_markmap_html(markdown_content)
                             components.html(html_content, height=700, scrolling=True)
                         
                         with tab2:
-                            st.subheader("Generated Markdown")
-                            st.text_area("Markdown Content", markdown_content, height=400)
+                            st.subheader("Tạo ghi chú")
+                            st.text_area("Nội dung ghi chú", markdown_content, height=400)
                             
                             st.download_button(
-                                label="⬇️ Download Markdown",
+                                label="⬇️ Tải xuống ghi chú",
                                 data=markdown_content,
                                 file_name="mindmap.md",
                                 mime="text/markdown"
