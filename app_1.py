@@ -137,7 +137,7 @@ def create_markmap_html(markdown_content):
         <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.14.3/dist/browser/index.min.js"></script>
     </head>
     <body>
-        <button id="downloadButton">⬇️ Download SVG file</button>
+        <button id="downloadButton">⬇️ Tải xuống file SVG</button>
         <svg id="mindmap"></svg>
         <script>
             window.onload = async () => {{
@@ -199,7 +199,7 @@ def create_markmap_html(markdown_content):
 def main():
     st.set_page_config(layout="wide")
     
-    st.title("📚 AI-Powered Mindmap Converter App ") 
+    st.title("📚 AI Chuyển đổi gợi ý thành Sơ đồ tư duy MindMap ") 
     st.markdown(
         """
         <style>
@@ -241,28 +241,28 @@ def main():
         return
 
     # Add a text area for user-provided prompt
-    st.subheader("📓Generate Mindmap from Text")
-    prompt_text = st.text_area("Enter your text prompt here:", height=200)
+    st.subheader("📓Xuất Mindmap từ gợi ý")
+    prompt_text = st.text_area("Nhập đoạn gợi ý, yêu cầu của bạn tại đây:", height=200)
 
-    if st.button("Convert Text to Mindmap"):
+    if st.button("Xuất Mindmap"):
         if prompt_text.strip():
-            with st.spinner("🔄 Generating mindmap from text prompt..."):
+            with st.spinner("🔄 Xuất ra Mindmap từ gợi ý văn bản..."):
                 markdown_content = generate_mindmap_from_prompt(prompt_text)
 
                 if markdown_content:
-                    tab1, tab2 = st.tabs(["📊 Mindmap", "📝 Markdown"])
+                    tab1, tab2 = st.tabs(["📊 Mindmap", "📝 Ghi chú"])
 
                     with tab1:
-                        st.subheader("Interactive Mindmap")
+                        st.subheader("Mindmap trực quan")
                         html_content = create_markmap_html(markdown_content)
                         components.html(html_content, height=700, scrolling=True)
 
                     with tab2:
-                        st.subheader("Generated Markdown")
+                        st.subheader("Ghi chú")
                         st.text_area("Markdown Content", markdown_content, height=400)
 
                         st.download_button(
-                            label="⬇️ Download Markdown",
+                            label="⬇️ Tải xuống ghi chú",
                             data=markdown_content,
                             file_name="mindmap_from_prompt.md",
                             mime="text/markdown"
