@@ -8,7 +8,7 @@ genai.configure(api_key="AIzaSyAD5-tRTbhtr17baOAVq307Fguv5oa49hY")
 
 def get_events_from_gemini(description):
     prompt = f"""
-    Given the description below, generate ONLY a list of events with dates.
+    Given the description below, generate ONLY a list of events with dates. If requirement is in Vietnamese, show result in Vietnamese language.
     Output format must be strict JSON array like:
     
     [
