@@ -241,10 +241,10 @@ def main():
         return
 
     # Add a text area for user-provided prompt
-    st.subheader("📓Xuất Mindmap từ gợi ý")
-    prompt_text = st.text_area("Nhập đoạn gợi ý, yêu cầu của bạn tại đây:", height=200)
+    st.subheader("📓Tạo Mindmap từ gợi ý")
+    prompt_text = st.text_area("Nhập đoạn gợi ý, yêu cầu của bạn tại đây:", placeholder="Nhập vào gợi ý, yêu cầu.....", height=200)
 
-    if st.button("Xuất Mindmap"):
+    if st.button(" Mindmap"):
         if prompt_text.strip():
             with st.spinner("🔄 Xuất ra Mindmap từ gợi ý văn bản..."):
                 markdown_content = generate_mindmap_from_prompt(prompt_text)
