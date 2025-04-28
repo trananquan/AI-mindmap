@@ -80,7 +80,7 @@ def build_mermaid_flowchart(title, data, flow_direction='TD'):
 
     # Assign classes
     for node in nodes:
-        if node['text'].lower() in ["start", "end"]:
+        if node['text'].lower() in ["start", "end", "bắt đầu", "kết thúc"]:
             mermaid += f"    class {node['id']} startend;\n"
         elif "decision" in node['text'].lower():
             mermaid += f"    class {node['id']} decision;\n"
