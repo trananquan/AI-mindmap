@@ -9,7 +9,7 @@ API_KEY = "AIzaSyAD5-tRTbhtr17baOAVq307Fguv5oa49hY"
 def configure_genai():
     """Configure the Gemini AI with the API key."""
     if not API_KEY:
-        st.error("API Key is missing. Please provide a valid Google API key.")
+        st.error("API Key không hợp lệ. Xin hãy cung cấp Google API key hợp lệ.")
         return False
     try:
         genai.configure(api_key=API_KEY)
@@ -28,7 +28,7 @@ def extract_text_from_pdf(pdf_file):
             if page_text:  # Only add non-empty pages
                 text += page_text + "\n"
         if not text.strip():
-            st.warning("No text could be extracted from the PDF. Please ensure it's not scanned or image-based.")
+            st.warning("Không có văn bản dạng text từ file PDF. Nhập file PDF dạng ký tự, không phải dạng ảnh.")
             return None
         return text.strip()
     except Exception as e:
@@ -43,7 +43,7 @@ def create_mindmap_markdown(text):
         max_chars = 90000
         if len(text) > max_chars:
             text = text[:max_chars] + "..."
-            st.warning(f"Text was truncated to {max_chars} characters due to length limitations.")
+            st.warning(f"Trích xuất tổng cộng {max_chars} ký tự dựa trên độ dài văn bản.")
         
         prompt = """
         Create a hierarchical markdown mindmap from the following text. 
