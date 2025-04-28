@@ -120,7 +120,7 @@ description = st.text_area("Nhập vào mô tả biểu đồ Flowchart", placeh
 #    "Phải qua trái": "RL"
 #}[flow_direction]
 
-flow_direction = st.selectbox("Hướng luồng quy trình", options=["TD (Trên xuống dưới)", "LR (Trái qua phải)", "BT (Dưới lên trên)", "RL (Phải qua trái)"])
+flow_direction = st.selectbox("Hướng luồng quy trình", options=["TD (Top-Down)", "LR (Left-Right)", "BT (Bottom-Top)", "RL (Right-Left)"])
 
 # Mapping for short code
 flow_direction_short = {
