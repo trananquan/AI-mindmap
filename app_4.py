@@ -110,14 +110,24 @@ st.title("📊 AI tạo biểu đồ quy trình Flowchart")
 
 title = st.text_input("Tên biểu đồ Flowchart", placeholder="Nhập vào tên biểu đồ.....")
 description = st.text_area("Nhập vào mô tả biểu đồ Flowchart", placeholder="Nhập vào mô tả biểu đồ.....", height=150)
-flow_direction = st.selectbox("Hướng luồng quy trình", options=["Trên xuống dưới", "Trái qua phải", "Dưới lên trên", "Phải qua trái"])
+#flow_direction = st.selectbox("Hướng luồng quy trình", options=["Trên xuống dưới", "Trái qua phải", "Dưới lên trên", "Phải qua trái"])
+
+# Mapping for short code
+#flow_direction_short = {
+#    "Trên xuống dưới": "TD",
+#    "Trái qua phải": "LR",
+#    "Dưới lên trên": "BT",
+#    "Phải qua trái": "RL"
+#}[flow_direction]
+
+flow_direction = st.selectbox("Flow Direction", options=["TD (Top-Down)", "LR (Left-Right)", "BT (Bottom-Top)", "RL (Right-Left)"])
 
 # Mapping for short code
 flow_direction_short = {
-    "Trên xuống dưới": "TD",
-    "Trái qua phải": "LR",
-    "Dưới lên trên": "BT",
-    "Phải qua trái": "RL"
+    "TD (Top-Down)": "TD",
+    "LR (Left-Right)": "LR",
+    "BT (Bottom-Top)": "BT",
+    "RL (Right-Left)": "RL"
 }[flow_direction]
 
 if st.button("Tạo biểu đồ"):
