@@ -124,10 +124,10 @@ flow_direction = st.selectbox("Hướng luồng quy trình", options=["TD (Trên
 
 # Mapping for short code
 flow_direction_short = {
-    "TD (Trên xuống dưới)": "TD",
-    "LR (Trái qua phải)": "LR",
-    "BT (Dưới lên trên)": "BT",
-    "RL (Phải qua trái)": "RL"
+    "TD (Top-Down)": "TD",
+    "LR (Left-Right)": "LR",
+    "BT (Bottom-Top)": "BT",
+    "RL (Right-Left)": "RL"
 }[flow_direction]
 
 if st.button("Tạo biểu đồ"):
