@@ -1,3 +1,5 @@
 google-generativeai
 streamlit
 PyPDF2
+mysql.connector
+urllib.parse
