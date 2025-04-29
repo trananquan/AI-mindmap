@@ -2,6 +2,28 @@ import streamlit as st
 import google.generativeai as genai
 import streamlit.components.v1 as components
 import json
+import mysql.connector
+from urllib.parse import parse_qs
+
+# DB connection
+def connect_db():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",
+        database="mindmap"
+    )
+
+# Validate token
+def is_valid_token(token):
+    conn = connect_db()
+    cursor = conn.cursor()
+    cursor.execute("SELECT user_id FROM sessions WHERE token = %s", (token,))
+    result = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return result is not None
+
 
 # Setup Gemini API
 genai.configure(api_key="AIzaSyAD5-tRTbhtr17baOAVq307Fguv5oa49hY")
