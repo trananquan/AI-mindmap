@@ -55,7 +55,7 @@ def render_mermaid(mermaid_code):
 
 
 # Streamlit app UI
-st.set_page_config(page_title="AI Timeline Builder", layout="wide")
+st.set_page_config(page_title="AI Timeline Builder",page_icon="🧠", layout="wide")
 st.title("📚 AI tạo biểu đồ Timeline")
 
 title = st.text_input("Tên biểu đồ Timeline", placeholder="Nhập vào tên biểu đồ.....")
