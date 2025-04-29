@@ -24,6 +24,20 @@ def is_valid_token(token):
     conn.close()
     return result is not None
 
+# Get token from URL
+query_params = st.experimental_get_query_params()
+token = query_params.get("token", [None])[0]
+
+# Check token
+if not token or not is_valid_token(token):
+    st.error("🔒 Unauthorized. Please login from the website.")
+    st.stop()
+
+# Protected content
+st.title("🔐 Welcome to your protected Streamlit app")
+st.success("You're logged in with a valid token!")
+st.write("This dashboard is only visible after website login.")
+
 
 # Setup Gemini API
 genai.configure(api_key="AIzaSyAD5-tRTbhtr17baOAVq307Fguv5oa49hY")
