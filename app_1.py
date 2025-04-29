@@ -197,7 +197,7 @@ def create_markmap_html(markdown_content):
 
 
 def main():
-    st.set_page_config(layout="wide")
+    st.set_page_config(page_title="Text to Mindmap",page_icon="🧠",layout="wide")
     
     st.title("📚 AI chuyển gợi ý thành Sơ đồ MindMap ") 
     st.markdown(
