@@ -105,12 +105,8 @@ def render_mermaid(mermaid_code):
         scrolling=True,
     )
 
-st.set_page_config(
-    page_title="AI Flowchart Builder",
-    page_icon="🧠",  # Or use a URL to your icon: "https://mydomain.com/favicon.ico"
-)
 # Streamlit UI
-# st.set_page_config(page_title="AI Flowchart Builder", layout="wide")
+st.set_page_config(page_title="AI Flowchart Builder", page_icon="🧠", layout="wide")
 st.title("📊 AI tạo biểu đồ quy trình Flowchart")
 
 title = st.text_input("Tên biểu đồ Flowchart", placeholder="Nhập vào tên biểu đồ.....")
