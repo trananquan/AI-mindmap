@@ -2,42 +2,6 @@ import streamlit as st
 import google.generativeai as genai
 import streamlit.components.v1 as components
 import json
-import mysql.connector
-from urllib.parse import parse_qs
-
-# DB connection
-def connect_db():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="mindmap"
-    )
-
-# Validate token
-def is_valid_token(token):
-    conn = connect_db()
-    cursor = conn.cursor()
-    cursor.execute("SELECT user_id FROM sessions WHERE token = %s", (token,))
-    result = cursor.fetchone()
-    cursor.close()
-    conn.close()
-    return result is not None
-
-# Get token from URL
-query_params = st.experimental_get_query_params()
-token = query_params.get("token", [None])[0]
-
-# Check token
-if not token or not is_valid_token(token):
-    st.error("🔒 Unauthorized. Please login from the website.")
-    st.stop()
-
-# Protected content
-st.title("🔐 Welcome to your protected Streamlit app")
-st.success("You're logged in with a valid token!")
-st.write("This dashboard is only visible after website login.")
-
 
 # Setup Gemini API
 genai.configure(api_key="AIzaSyAD5-tRTbhtr17baOAVq307Fguv5oa49hY")
